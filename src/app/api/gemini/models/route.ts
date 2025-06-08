@@ -10,7 +10,7 @@ interface ModelStatus {
   error?: string;
 }
 
-export async function GET(request: NextRequest) {
+export async function GET() {
   try {
     if (!process.env.GOOGLE_API_KEY) {
       return NextResponse.json(
@@ -35,7 +35,7 @@ export async function GET(request: NextRequest) {
         
         // Test với prompt đơn giản
         const result = await model.generateContent('Hello');
-        const response = await result.response;
+        await result.response;
         
         modelStatus.push({
           name: modelName,
