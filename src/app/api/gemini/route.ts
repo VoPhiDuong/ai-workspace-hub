@@ -17,7 +17,10 @@ export async function POST(request: NextRequest) {
     if (!process.env.GOOGLE_API_KEY) {
       console.error('Google API key not configured');
       return NextResponse.json(
-        { error: 'Google API key not configured' },
+        { 
+          error: 'Google API key not configured. Please add GOOGLE_API_KEY to environment variables.',
+          details: 'Vui lòng thêm GOOGLE_API_KEY vào Environment Variables trong Replit'
+        },
         { status: 500 }
       );
     }

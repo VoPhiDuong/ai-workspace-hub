@@ -17,8 +17,9 @@ class GeminiService {
         console.error('API Response Error:', {
           status: response.status,
           statusText: response.statusText,
-          error: errorData?.error,
-          url: response.url
+          error: errorData?.error || 'Unknown error',
+          url: response.url,
+          timestamp: new Date().toISOString()
         });
         
         throw new Error(`API error: ${errorMessage}`);
